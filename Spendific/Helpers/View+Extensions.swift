@@ -5,4 +5,31 @@
 //  Created by Pranav R on 26/06/24.
 //
 
-import Foundation
+import SwiftUI
+
+extension View {
+    @ViewBuilder
+    func hSpacing(_ alignment: Alignment = .center) -> some View {
+        self
+            .frame(maxWidth: .infinity, alignment: alignment)
+    }
+    
+    @ViewBuilder
+    func vSpacing(_ alignment: Alignment = .center) -> some View {
+        self
+            .frame(maxHeight: .infinity, alignment: alignment)
+    }
+    
+    func format(date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        
+        return formatter.string(from: date)
+    }
+    
+    var currencySymbol: String {
+        let locale = Locale.current
+        
+        return locale.currencySymbol ?? ""
+    }
+}

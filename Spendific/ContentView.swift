@@ -11,26 +11,50 @@ struct ContentView: View {
     // Visibility Status
     @AppStorage("isFirstTime") private var isFirstTime: Bool = true
     
+    // Environment variables
+    @Environment(\.colorScheme) private var colorScheme
+    
     // Tab View Properties
     @State private var currentTab: Tab = .home
     
+    init() {
+        let appear = UINavigationBarAppearance()
+
+        let atters: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "Poppins-Bold", size: 30)!
+        ]
+        
+        let smallAtters: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "Poppins-Bold", size: 15)!
+        ]
+
+        appear.largeTitleTextAttributes = atters
+        appear.titleTextAttributes = smallAtters
+        UINavigationBar.appearance().standardAppearance = appear
+        UINavigationBar.appearance().compactAppearance = appear
+//        UINavigationBar.appearance().scrollEdgeAppearance = appear
+     }
+    
     var body: some View {
-        TabView(selection: $currentTab,
-                content:  {
-            Home()
-                .tag(Tab.home)
-                .tabItem { Tab.home.tabContent }
-            Search()
-                .tag(Tab.search)
-                .tabItem { Tab.search.tabContent }
-            Graph()
-                .tag(Tab.charts)
-                .tabItem { Tab.charts.tabContent }
-            Settings()
-                .tag(Tab.settings)
-                .tabItem { Tab.settings.tabContent }
-        })
-        .tint(appTint)
+        ZStack(alignment: .bottom) {
+            TabView(selection: $currentTab,
+                    content:  {
+                Group {
+                    Home()
+                        .tag(Tab.home)
+                    Search()
+                        .tag(Tab.search)
+                    Graph()
+                        .tag(Tab.charts)
+                    Settings()
+                        .tag(Tab.settings)
+                }
+                .toolbar(.hidden, for: .tabBar)
+            })
+
+            CustomTabBar(selectedTab: $currentTab)
+        }
+        .ignoresSafeArea()
         .sheet(isPresented: $isFirstTime, content: {
             IntroScreen()
                 .interactiveDismissDisabled()

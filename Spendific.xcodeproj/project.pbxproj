@@ -18,6 +18,12 @@
 		C5A1DFA82C2B13BA005BEC27 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A1DFA72C2B13BA005BEC27 /* Settings.swift */; };
 		C5A1DFAA2C2B14B2005BEC27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A1DFA92C2B14B2005BEC27 /* Constants.swift */; };
 		C5A1DFAC2C2B223B005BEC27 /* IntroScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A1DFAB2C2B223B005BEC27 /* IntroScreen.swift */; };
+		C5CAE7AC2C2C13FF006EAB07 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7AB2C2C13FF006EAB07 /* CustomTabBar.swift */; };
+		C5CAE7AF2C2C3E43006EAB07 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7AE2C2C3E43006EAB07 /* View+Extensions.swift */; };
+		C5CAE7B22C2C4B79006EAB07 /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = C5CAE7B12C2C4B79006EAB07 /* Poppins */; };
+		C5CAE7B62C2C4CE6006EAB07 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */; };
+		C5CAE7B82C2C5051006EAB07 /* SpendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B72C2C5051006EAB07 /* SpendType.swift */; };
+		C5CAE7BA2C2C50A8006EAB07 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B92C2C50A8006EAB07 /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +39,13 @@
 		C5A1DFA72C2B13BA005BEC27 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C5A1DFA92C2B14B2005BEC27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C5A1DFAB2C2B223B005BEC27 /* IntroScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreen.swift; sourceTree = "<group>"; };
+		C5CAE7AB2C2C13FF006EAB07 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		C5CAE7AE2C2C3E43006EAB07 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		C5CAE7B12C2C4B79006EAB07 /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
+		C5CAE7B32C2C4BC9006EAB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		C5CAE7B72C2C5051006EAB07 /* SpendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendType.swift; sourceTree = "<group>"; };
+		C5CAE7B92C2C50A8006EAB07 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +78,8 @@
 		C5A1DF8C2C2ABF08005BEC27 /* Spendific */ = {
 			isa = PBXGroup;
 			children = (
+				C5CAE7B32C2C4BC9006EAB07 /* Info.plist */,
+				C5CAE7B02C2C4B5B006EAB07 /* Font */,
 				C5A1DF9D2C2AC028005BEC27 /* View */,
 				C5A1DF9C2C2AC023005BEC27 /* Model */,
 				C5A1DF9B2C2AC01C005BEC27 /* Helpers */,
@@ -88,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				C5A1DFA92C2B14B2005BEC27 /* Constants.swift */,
+				C5CAE7AE2C2C3E43006EAB07 /* View+Extensions.swift */,
+				C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -96,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				C5A1DF9E2C2AC050005BEC27 /* Tab.swift */,
+				C5CAE7B72C2C5051006EAB07 /* SpendType.swift */,
+				C5CAE7B92C2C50A8006EAB07 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,8 +122,10 @@
 		C5A1DF9D2C2AC028005BEC27 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C5CAE7AD2C2C144E006EAB07 /* HelperComponents */,
 				C5A1DFA02C2B1393005BEC27 /* TabViews */,
 				C5A1DFAB2C2B223B005BEC27 /* IntroScreen.swift */,
+				C5CAE7AB2C2C13FF006EAB07 /* CustomTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,6 +139,21 @@
 				C5A1DFA72C2B13BA005BEC27 /* Settings.swift */,
 			);
 			path = TabViews;
+			sourceTree = "<group>";
+		};
+		C5CAE7AD2C2C144E006EAB07 /* HelperComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HelperComponents;
+			sourceTree = "<group>";
+		};
+		C5CAE7B02C2C4B5B006EAB07 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAE7B12C2C4B79006EAB07 /* Poppins */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CAE7B22C2C4B79006EAB07 /* Poppins in Resources */,
 				C5A1DF952C2ABF09005BEC27 /* Preview Assets.xcassets in Resources */,
 				C5A1DF922C2ABF09005BEC27 /* Assets.xcassets in Resources */,
 			);
@@ -190,14 +227,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CAE7BA2C2C50A8006EAB07 /* Transaction.swift in Sources */,
 				C5A1DFA62C2B13B2005BEC27 /* Graph.swift in Sources */,
 				C5A1DF9F2C2AC050005BEC27 /* Tab.swift in Sources */,
+				C5CAE7AF2C2C3E43006EAB07 /* View+Extensions.swift in Sources */,
 				C5A1DF902C2ABF08005BEC27 /* ContentView.swift in Sources */,
 				C5A1DFA42C2B13A9005BEC27 /* Search.swift in Sources */,
 				C5A1DFAC2C2B223B005BEC27 /* IntroScreen.swift in Sources */,
+				C5CAE7B62C2C4CE6006EAB07 /* Font+Extensions.swift in Sources */,
 				C5A1DFA82C2B13BA005BEC27 /* Settings.swift in Sources */,
+				C5CAE7AC2C2C13FF006EAB07 /* CustomTabBar.swift in Sources */,
 				C5A1DFA22C2B13A0005BEC27 /* Home.swift in Sources */,
 				C5A1DF8E2C2ABF08005BEC27 /* SpendificApp.swift in Sources */,
+				C5CAE7B82C2C5051006EAB07 /* SpendType.swift in Sources */,
 				C5A1DFAA2C2B14B2005BEC27 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +377,7 @@
 				DEVELOPMENT_TEAM = F4B9M6MWDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spendific/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -364,6 +407,7 @@
 				DEVELOPMENT_TEAM = F4B9M6MWDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spendific/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
