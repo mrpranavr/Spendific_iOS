@@ -27,6 +27,7 @@ extension View {
         return formatter.string(from: date)
     }
     
+    // Get the currency symbol for the user's place
     var currencySymbol: String {
         let locale = Locale.current
         

@@ -24,6 +24,10 @@
 		C5CAE7B62C2C4CE6006EAB07 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */; };
 		C5CAE7B82C2C5051006EAB07 /* SpendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B72C2C5051006EAB07 /* SpendType.swift */; };
 		C5CAE7BA2C2C50A8006EAB07 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAE7B92C2C50A8006EAB07 /* Transaction.swift */; };
+		C5DFFC4D2C2D6D4000C62E24 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC4C2C2D6D4000C62E24 /* CardView.swift */; };
+		C5DFFC4F2C2D6DF600C62E24 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC4E2C2D6DF600C62E24 /* HelperFunctions.swift */; };
+		C5DFFC512C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */; };
+		C5DFFC552C303F3C00C62E24 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		C5CAE7B72C2C5051006EAB07 /* SpendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendType.swift; sourceTree = "<group>"; };
 		C5CAE7B92C2C50A8006EAB07 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		C5DFFC4C2C2D6D4000C62E24 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		C5DFFC4E2C2D6DF600C62E24 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHorizontalScrollView.swift; sourceTree = "<group>"; };
+		C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 				C5A1DFA92C2B14B2005BEC27 /* Constants.swift */,
 				C5CAE7AE2C2C3E43006EAB07 /* View+Extensions.swift */,
 				C5CAE7B52C2C4CE6006EAB07 /* Font+Extensions.swift */,
+				C5DFFC4E2C2D6DF600C62E24 /* HelperFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -144,6 +153,9 @@
 		C5CAE7AD2C2C144E006EAB07 /* HelperComponents */ = {
 			isa = PBXGroup;
 			children = (
+				C5DFFC4C2C2D6D4000C62E24 /* CardView.swift */,
+				C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */,
+				C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */,
 			);
 			path = HelperComponents;
 			sourceTree = "<group>";
@@ -231,13 +243,17 @@
 				C5A1DFA62C2B13B2005BEC27 /* Graph.swift in Sources */,
 				C5A1DF9F2C2AC050005BEC27 /* Tab.swift in Sources */,
 				C5CAE7AF2C2C3E43006EAB07 /* View+Extensions.swift in Sources */,
+				C5DFFC4D2C2D6D4000C62E24 /* CardView.swift in Sources */,
 				C5A1DF902C2ABF08005BEC27 /* ContentView.swift in Sources */,
 				C5A1DFA42C2B13A9005BEC27 /* Search.swift in Sources */,
 				C5A1DFAC2C2B223B005BEC27 /* IntroScreen.swift in Sources */,
 				C5CAE7B62C2C4CE6006EAB07 /* Font+Extensions.swift in Sources */,
+				C5DFFC4F2C2D6DF600C62E24 /* HelperFunctions.swift in Sources */,
 				C5A1DFA82C2B13BA005BEC27 /* Settings.swift in Sources */,
+				C5DFFC512C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift in Sources */,
 				C5CAE7AC2C2C13FF006EAB07 /* CustomTabBar.swift in Sources */,
 				C5A1DFA22C2B13A0005BEC27 /* Home.swift in Sources */,
+				C5DFFC552C303F3C00C62E24 /* TransactionCard.swift in Sources */,
 				C5A1DF8E2C2ABF08005BEC27 /* SpendificApp.swift in Sources */,
 				C5CAE7B82C2C5051006EAB07 /* SpendType.swift in Sources */,
 				C5A1DFAA2C2B14B2005BEC27 /* Constants.swift in Sources */,

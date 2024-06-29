@@ -21,11 +21,13 @@ struct ContentView: View {
         let appear = UINavigationBarAppearance()
 
         let atters: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "Poppins-Bold", size: 30)!
+            .font: UIFont(name: "Poppins-SemiBold", size: 30)!,
+            .tracking: 1
         ]
         
         let smallAtters: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "Poppins-Bold", size: 15)!
+            .font: UIFont(name: "Poppins-SemiBold", size: 15)!,
+            .tracking: 1
         ]
 
         appear.largeTitleTextAttributes = atters

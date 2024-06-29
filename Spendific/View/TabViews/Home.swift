@@ -21,19 +21,44 @@ struct Home: View {
             
             NavigationStack {
                     ScrollView(.vertical, content: {
-                        LazyVStack(spacing: 10) {
-                            VStack(spacing: 10) {
-                                Text("Expenses this month")
-                                    .font(.subTexts)
-                                    .tracking(1.5)
-                                    .foregroundStyle(colorScheme == .dark ? .gray : appCaptionTint)
+                        LazyVStack(spacing: 35) {
+                            // MARK: Month's expense Card View
+                            CardView(income: 15000, expense: 10000)
+                            
+                            // MARK: Add Expense Categories
+                            VStack {
+                                Text("Add Transaction")
+                                    .hSpacing(.leading)
+                                    .font(.cardCatStyle)
+                                    .tracking(0.7)
                                 
-                                Text("\(currencySymbol) 25000")
-                                    .font(.boldHeader)
-                                    .foregroundStyle(colorScheme == .dark ? .white : appTint)
-                                    
+                                AddNewHorizontalScrollView()
                             }
-                            .padding(.top, 50)
+                            .padding(.horizontal, 16)
+                            
+                            // MARK: Recent Trasactions
+                            VStack {
+                                HStack {
+                                    Text("Recent Transaction")
+                                        .hSpacing(.leading)
+                                        .font(.cardCatStyle)
+                                        .tracking(0.7)
+                                    
+                                    Text("View All")
+                                        .font(.subHeader)
+                                        .foregroundStyle(.gray)
+                                        .tracking(0.7)
+                                }
+                                .padding(.bottom, 16)
+                                
+                                ForEach(sampleTransactions) { item in
+                                    TransactionCard(transaction: item)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            
+                            VStack {}
+                                .frame(height: 80)
                         }
                     })
                     .navigationTitle("Home")

@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct Search: View {
+    // View Properties
+    @State private var searchText: String = ""
     var body: some View {
-        Text("Search View")
+        NavigationStack {
+            ScrollView(.vertical, content: {
+                LazyVStack(content: {
+                    
+                })
+            })
+            .overlay(content: {
+                ContentUnavailableView("Search Transactions", systemImage: "magnifyingglass")
+            })
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .navigationTitle("Search")
+        }
+        .tint(appAccent)
     }
 }
 

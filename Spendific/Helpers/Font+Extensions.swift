@@ -13,6 +13,14 @@ extension Font {
     }
     
     static var boldHeader: Font {
-        Font.custom("Poppins-SemiBold", size: 55)
+        Font.custom("Poppins-SemiBold", size: 50)
+    }
+    
+    static var cardCatStyle: Font {
+        Font.custom("Poppins-SemiBold", size: 18)
+    }
+    
+    static var subHeader: Font {
+        Font.custom("Poppins-Regular", size: 14)
     }
 }

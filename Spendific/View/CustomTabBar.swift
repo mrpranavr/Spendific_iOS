@@ -44,9 +44,9 @@ struct CustomTabBar: View {
             })
         }
         .frame(height: 106)
-        .background(colorScheme == .dark ? .gray.opacity(0.2) : .white)
+        .background(colorScheme == .dark ? .customGray : .white)
         .clipShape(.rect(topLeadingRadius: 30, topTrailingRadius: 30))
-        .shadow(color: .gray.opacity(0.3), radius: 8)
+        .shadow(color: colorScheme == .light ? .gray.opacity(0.2) : .black.opacity(1), radius: 8)
     }
     
     @ViewBuilder
