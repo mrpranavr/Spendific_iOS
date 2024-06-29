@@ -57,6 +57,7 @@ struct ContentView: View {
             CustomTabBar(selectedTab: $currentTab)
         }
         .ignoresSafeArea()
+        .tint(appAccent)
         .sheet(isPresented: $isFirstTime, content: {
             IntroScreen()
                 .interactiveDismissDisabled()

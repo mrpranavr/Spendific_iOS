@@ -14,13 +14,16 @@ struct Home: View {
     // Environment Properties
     @Environment(\.colorScheme) private var colorScheme
     
+    // View Properties
+    @State private var showAddExpenseView: Bool = false
+    
     var body: some View {
         GeometryReader {
             // For Animation purposes
             let size = $0.size
             
             NavigationStack {
-                    ScrollView(.vertical, content: {
+                    ScrollView(.vertical, showsIndicators: false, content: {
                         LazyVStack(spacing: 35) {
                             // MARK: Month's expense Card View
                             CardView(income: 15000, expense: 10000)
@@ -64,7 +67,9 @@ struct Home: View {
                     .navigationTitle("Home")
                     .toolbar(content: {
                         ToolbarItem(content: {
-                            Button(action: {}, label: {
+                            Button(action: {
+                                showAddExpenseView.toggle()
+                            }, label: {
                                 Image(systemName: "plus")
                                     .font(.caption)
                                     .fontWeight(.semibold)
@@ -75,6 +80,9 @@ struct Home: View {
                         })
                 })
             }
+            .sheet(isPresented: $showAddExpenseView, content: {
+                AddTransactionView()
+            })
         }
     }
     

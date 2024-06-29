@@ -28,6 +28,8 @@
 		C5DFFC4F2C2D6DF600C62E24 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC4E2C2D6DF600C62E24 /* HelperFunctions.swift */; };
 		C5DFFC512C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */; };
 		C5DFFC552C303F3C00C62E24 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */; };
+		C5DFFC572C309DE100C62E24 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC562C309DE100C62E24 /* AddTransactionView.swift */; };
+		C5DFFC592C30ADD300C62E24 /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		C5DFFC4E2C2D6DF600C62E24 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHorizontalScrollView.swift; sourceTree = "<group>"; };
 		C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
+		C5DFFC562C309DE100C62E24 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 				C5A1DFA02C2B1393005BEC27 /* TabViews */,
 				C5A1DFAB2C2B223B005BEC27 /* IntroScreen.swift */,
 				C5CAE7AB2C2C13FF006EAB07 /* CustomTabBar.swift */,
+				C5DFFC562C309DE100C62E24 /* AddTransactionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				C5DFFC4C2C2D6D4000C62E24 /* CardView.swift */,
 				C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */,
 				C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */,
+				C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */,
 			);
 			path = HelperComponents;
 			sourceTree = "<group>";
@@ -242,6 +248,8 @@
 				C5CAE7BA2C2C50A8006EAB07 /* Transaction.swift in Sources */,
 				C5A1DFA62C2B13B2005BEC27 /* Graph.swift in Sources */,
 				C5A1DF9F2C2AC050005BEC27 /* Tab.swift in Sources */,
+				C5DFFC572C309DE100C62E24 /* AddTransactionView.swift in Sources */,
+				C5DFFC592C30ADD300C62E24 /* FloatingLabelTextField.swift in Sources */,
 				C5CAE7AF2C2C3E43006EAB07 /* View+Extensions.swift in Sources */,
 				C5DFFC4D2C2D6D4000C62E24 /* CardView.swift in Sources */,
 				C5A1DF902C2ABF08005BEC27 /* ContentView.swift in Sources */,

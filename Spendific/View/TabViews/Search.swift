@@ -27,7 +27,6 @@ struct Search: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("Search")
         }
-        .tint(appAccent)
     }
 }
 

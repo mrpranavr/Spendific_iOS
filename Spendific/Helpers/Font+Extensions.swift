@@ -27,4 +27,8 @@ extension Font {
     static var subHeader: Font {
         Font.custom("Poppins-Regular", size: 14)
     }
+    
+    static var settingsHeader: Font {
+        Font.custom("Poppins-Regular", size: 15)
+    }
 }
