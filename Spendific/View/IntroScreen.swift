@@ -20,29 +20,34 @@ struct IntroScreen: View {
             VStack(spacing: 15) {
                 VStack(spacing: 0) {
                     Text("Welcome to")
-                        .font(.title)
+                        .font(.custom("Poppins-Medium", size: 20))
                         .fontWeight(.semibold)
+                        .tracking(0.7)
                         .multilineTextAlignment(.center)
                         .foregroundStyle(colorScheme == .dark ? .white : appTint)
                     
                     
                     HStack(spacing: 0) {
                         Text("Spend")
-                            .font(.system(size: 60, weight: .bold))
+                            .font(.custom("Poppins-Bold", size: 55))
+                            .tracking(0.7)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(appAccent.gradient)
                         
                         Text("ific")
-                            .font(.system(size: 60, weight: .bold))
+                            .font(.custom("Poppins-Bold", size: 55))
+                            .tracking(0.7)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(colorScheme == .dark ? .white : appTint)
                     }
                 }
                 
                 Text("Take control of your spending and unlock financial insights effortlessly with Spendific.")
-                    .font(.subheadline)
+                    .font(.subHeader)
+                    .tracking(0.7)
                     .foregroundStyle(.gray)
                     .multilineTextAlignment(.center)
+                    .frame(maxWidth: 320)
             }
             .padding(.top, 65)
             .padding(.bottom, 35)
@@ -58,9 +63,11 @@ struct IntroScreen: View {
             Button(action: {
                 isFirstTime = false
             }, label: {
-                Text("Continue")
+                Text("Start Logging")
+                    .font(.cardCatStyle)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
+                    .tracking(0.7)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 20)
                     .background(appAccent.gradient, in: .rect(cornerRadius: 12))
@@ -81,13 +88,14 @@ struct IntroScreen: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(title)
-                    .font(.title3)
+                    .font(.cardCatStyle)
                     .fontWeight(.semibold)
                     .foregroundStyle(colorScheme == .dark ? .white : appTint)
                 
                 Text(subTitle)
-                    .font(.subheadline)
+                    .font(.subHeader)
                     .foregroundStyle(.gray)
+                    .tracking(0.7)
             }
         }
     }

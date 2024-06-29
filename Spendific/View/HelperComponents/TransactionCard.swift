@@ -17,10 +17,33 @@ struct TransactionCard: View {
     var body: some View {
         HStack {
             Image(systemName: transaction.catIconName)
-                .font(.title)
+                .font(.title2)
                 .foregroundStyle(colorScheme == .dark ? transaction.catBgColor : transaction.catAccentColor)
-                .frame(width: 77, height: 77)
-                .background(colorScheme == .dark ? transaction.catAccentColor : transaction.catBgColor, in: .rect(cornerRadius: 16))
+                .frame(width: 55, height: 55)
+                .background(colorScheme == .dark ? transaction.catAccentColor : transaction.catBgColor, in: .rect(cornerRadius: 8))
+                .padding(.trailing, 5)
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text(transaction.title)
+                    .font(.custom("Poppins-Medium", size: 12))
+                    .tracking(0.8)
+                
+                Text(format(date: transaction.dateAdded, format: "dd-MM-yyyy"))
+                    .font(.subTextSmall)
+            }
+            
+            Spacer()
+            
+            Text(currencyString(transaction.amount, allowedDigits: 0))
+                .font(.subHeader)
+                .fontWeight(.semibold)
+                .foregroundStyle(transaction.spendType == SpendType.income.rawValue ? .incomeAccent : .primaryRed)
+        }
+        .padding(15)
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(colorScheme == .dark ? .gray.opacity(0.2) : .white)
+                .shadow(color: .gray.opacity(0.1), radius: 4, x: 0, y: 4)
         }
     }
 }

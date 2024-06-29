@@ -12,6 +12,10 @@ extension Font {
         Font.custom("Poppins-Regular", size: 12)
     }
     
+    static var subTextSmall: Font {
+        Font.custom("Poppins-Regular", size: 10)
+    }
+    
     static var boldHeader: Font {
         Font.custom("Poppins-SemiBold", size: 50)
     }

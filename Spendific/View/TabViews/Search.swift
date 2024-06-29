@@ -18,7 +18,11 @@ struct Search: View {
                 })
             })
             .overlay(content: {
-                ContentUnavailableView("Search Transactions", systemImage: "magnifyingglass")
+                if #available(iOS 17.0, *) {
+                    ContentUnavailableView("Search Transactions", systemImage: "magnifyingglass")
+                } else {
+                    // Fallback on earlier versions
+                }
             })
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("Search")
