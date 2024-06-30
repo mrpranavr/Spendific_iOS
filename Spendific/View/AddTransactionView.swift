@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTransactionView: View {
     // Environment Variables
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
     // View Properties
     @State private var title: String = ""
@@ -17,15 +18,18 @@ struct AddTransactionView: View {
     @State private var amount: Double = .zero
     @State private var dateAdded: Date = .init()
     @State private var spendType: SpendType = .expense
-    @State private var category: CategoryNames = .other
+    @State private var category: CategoryNames = .transport
+    
+    @State private var amountString: String = ""
     
     // Focus States
     @FocusState private var isTitleFieldFocused: Bool
     @FocusState private var isRemarkFieldFocused: Bool
+    @FocusState private var isAmountFieldFocused: Bool
     
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, content: {
+            ScrollView(.vertical, showsIndicators: false, content: {
                 VStack(spacing: 35) {
                     VStack(spacing: 10) {
                         Text("Preview")
@@ -42,13 +46,27 @@ struct AddTransactionView: View {
                     }
                     
                     VStack(spacing: 10) {
-//                        Text("About Transaction")
-//                            .font(.subHeader)
-//                            .hSpacing(.leading)
-                        
-                        
                         FloatingLabelTextField(title: "Title", text: $title, isTextFieldFocused: _isTitleFieldFocused, placeholder: "Title")
                         FloatingLabelTextField(title: "Remarks", text: $remarks, isTextFieldFocused: _isRemarkFieldFocused, placeholder: "Remarks")
+                        
+                        CustomSegementedPicklist(SpendType.allCases, selectedItem: $spendType, content: {type in
+                            Text(type.rawValue.capitalized)
+                                .font(.subHeader)
+                                .foregroundStyle(.primary)
+                                .frame(maxWidth: .infinity)
+                        })
+                        
+                        // TODO: Add Amount field here. Need to update the Custom text Field to check number type.
+                        
+                        HStack {
+                            FloatingLabelTextField(title: "Amount", text: $amountString, isTextFieldFocused: _isAmountFieldFocused, placeholder: "Amount")
+                    
+                        }
+                        
+                        DatePicker("", selection: $dateAdded, displayedComponents: [.date])
+                            .datePickerStyle(.graphical)
+                            .padding()
+                            .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
                     }
                 }
                 .padding(.top, 30)

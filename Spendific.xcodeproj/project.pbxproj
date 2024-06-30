@@ -30,6 +30,7 @@
 		C5DFFC552C303F3C00C62E24 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */; };
 		C5DFFC572C309DE100C62E24 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC562C309DE100C62E24 /* AddTransactionView.swift */; };
 		C5DFFC592C30ADD300C62E24 /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */; };
+		C5DFFC5B2C30C85300C62E24 /* CustomSegementedPicklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFC5A2C30C85300C62E24 /* CustomSegementedPicklist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
 		C5DFFC562C309DE100C62E24 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 		C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
+		C5DFFC5A2C30C85300C62E24 /* CustomSegementedPicklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegementedPicklist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				C5DFFC502C2ECC5400C62E24 /* AddNewHorizontalScrollView.swift */,
 				C5DFFC542C303F3C00C62E24 /* TransactionCard.swift */,
 				C5DFFC582C30ADD300C62E24 /* FloatingLabelTextField.swift */,
+				C5DFFC5A2C30C85300C62E24 /* CustomSegementedPicklist.swift */,
 			);
 			path = HelperComponents;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CAE7BA2C2C50A8006EAB07 /* Transaction.swift in Sources */,
+				C5DFFC5B2C30C85300C62E24 /* CustomSegementedPicklist.swift in Sources */,
 				C5A1DFA62C2B13B2005BEC27 /* Graph.swift in Sources */,
 				C5A1DF9F2C2AC050005BEC27 /* Tab.swift in Sources */,
 				C5DFFC572C309DE100C62E24 /* AddTransactionView.swift in Sources */,

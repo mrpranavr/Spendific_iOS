@@ -18,9 +18,9 @@ struct Home: View {
     @State private var showAddExpenseView: Bool = false
     
     var body: some View {
-        GeometryReader {
+        GeometryReader { size in
             // For Animation purposes
-            let size = $0.size
+//            let size = $0.size
             
             NavigationStack {
                     ScrollView(.vertical, showsIndicators: false, content: {

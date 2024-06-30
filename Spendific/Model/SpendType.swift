@@ -10,7 +10,7 @@ import SwiftUI
 SpendType -> Enum to hold the primary transaction type.
 */
 
-enum SpendType: String {
+enum SpendType: String, CaseIterable {
     case income, expense
 }
 
