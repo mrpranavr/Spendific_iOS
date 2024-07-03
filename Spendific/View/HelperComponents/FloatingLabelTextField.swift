@@ -15,7 +15,8 @@ struct FloatingLabelTextField: View {
     var title: String
     @Binding var text: String
     @FocusState var isTextFieldFocused: Bool
-    var placeholder: String
+    var placeholder: String?
+    var type: TextFieldTypes = .String
     
     var body: some View {
         ZStack {
@@ -24,21 +25,38 @@ struct FloatingLabelTextField: View {
                 .foregroundStyle(.secondary)
                 .tracking(0.7)
                 .hSpacing(.leading)
-                .scaleEffect(isTextFieldFocused || !text.isEmpty ? 0.75 : 1, anchor: .leading)
-                .offset(y: isTextFieldFocused || !text.isEmpty ? -20 : 0)
+                .scaleEffect(isTextFieldFocused || !text.isEmpty || placeholder != nil  ? 0.75 : 1, anchor: .leading)
+                .offset(y: isTextFieldFocused || !text.isEmpty || placeholder != nil ? -25 : 0)
                 .animation(.easeInOut(duration: 0.1), value: isTextFieldFocused)
             
-            TextField("", text: $text)
-                .focused($isTextFieldFocused)
-                .onChange(of: isTextFieldFocused) { focused in
-                    if !focused && text.isEmpty {
-                        withAnimation(.easeIn(duration: 0.1), {
-                            isTextFieldFocused = false
-                        })
+            if type == .String {
+                TextField("", text: $text)
+                    .font(.subHeader)
+                    .focused($isTextFieldFocused)
+                    .onChange(of: isTextFieldFocused) { focused in
+                        if !focused && text.isEmpty {
+                            withAnimation(.easeIn(duration: 0.1), {
+                                isTextFieldFocused = false
+                            })
+                        }
                     }
-                }
+            }
+            
+            if type == .Number {
+                TextField(placeholder ?? "", text: $text)
+                    .keyboardType(.decimalPad)
+                    .font(.subHeader)
+                    .focused($isTextFieldFocused)
+                    .onChange(of: isTextFieldFocused) { focused in
+                        if !focused && text.isEmpty {
+                            withAnimation(.easeIn(duration: 0.1), {
+                                isTextFieldFocused = false
+                            })
+                        }
+                    }
+            }
         }
-        .padding(.top, isTextFieldFocused || !text.isEmpty ? 25 : 10)
+        .padding(.top, isTextFieldFocused || !text.isEmpty || placeholder != nil ? 30 : 10)
         .padding(.bottom, 10)
         .padding(.horizontal, 15)
         .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))

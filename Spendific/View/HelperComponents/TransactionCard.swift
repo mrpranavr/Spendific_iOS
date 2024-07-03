@@ -34,7 +34,7 @@ struct TransactionCard: View {
             
             Spacer()
             
-            Text(currencyString(transaction.amount, allowedDigits: 0))
+            Text(currencyString(transaction.amount, allowedDigits: 2))
                 .font(.subHeader)
                 .fontWeight(.semibold)
                 .foregroundStyle(transaction.spendType == SpendType.income.rawValue ? .incomeAccent : .primaryRed)

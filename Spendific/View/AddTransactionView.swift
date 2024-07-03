@@ -18,7 +18,7 @@ struct AddTransactionView: View {
     @State private var amount: Double = .zero
     @State private var dateAdded: Date = .init()
     @State private var spendType: SpendType = .expense
-    @State private var category: CategoryNames = .transport
+    @State private var category: CategoryNames = .other
     
     @State private var amountString: String = ""
     
@@ -39,16 +39,20 @@ struct AddTransactionView: View {
                         TransactionCard(transaction: .init(
                             title: title.isEmpty ? "Title" : title,
                             remarks: remarks.isEmpty ? "Remarks" : remarks,
-                            amount: amount,
+                            amount: Double(amountString) ?? .zero,
                             dateAdded: dateAdded,
                             spendType: spendType,
                             categoryName: category))
                     }
                     
                     VStack(spacing: 10) {
-                        FloatingLabelTextField(title: "Title", text: $title, isTextFieldFocused: _isTitleFieldFocused, placeholder: "Title")
-                        FloatingLabelTextField(title: "Remarks", text: $remarks, isTextFieldFocused: _isRemarkFieldFocused, placeholder: "Remarks")
+                        // Title Input Field
+                        FloatingLabelTextField(title: "Title", text: $title, isTextFieldFocused: _isTitleFieldFocused)
                         
+                        // Remarks Input Field
+                        FloatingLabelTextField(title: "Remarks", text: $remarks, isTextFieldFocused: _isRemarkFieldFocused)
+                        
+                        // Spend type segemented picker
                         CustomSegementedPicklist(SpendType.allCases, selectedItem: $spendType, content: {type in
                             Text(type.rawValue.capitalized)
                                 .font(.subHeader)
@@ -59,8 +63,11 @@ struct AddTransactionView: View {
                         // TODO: Add Amount field here. Need to update the Custom text Field to check number type.
                         
                         HStack {
-                            FloatingLabelTextField(title: "Amount", text: $amountString, isTextFieldFocused: _isAmountFieldFocused, placeholder: "Amount")
-                    
+                            // Amount Input Field
+                            FloatingLabelTextField(title: "Amount", text: $amountString, isTextFieldFocused: _isAmountFieldFocused, placeholder: "0.0", type: .Number)
+                            
+                            // Category Picker Field
+                            CustomPicklist()
                         }
                         
                         DatePicker("", selection: $dateAdded, displayedComponents: [.date])
@@ -97,45 +104,38 @@ struct AddTransactionView: View {
         }
     }
     
-//    @ViewBuilder
-//    func customTextField(_ title: String, value: Binding<String>, placeholder: String) -> some View {
-////        VStack(alignment: .leading, spacing: 10) {
-////            Text(title)
-////                .font(.subHeader)
-////                .hSpacing(.leading)
-////            
-////            TextField(placeholder, text: value)
-////                .padding(.horizontal, 15)
-////                .padding(.vertical, 10)
-////                .background(.gray.opacity(0.2), in: .rect(cornerRadius: 10))
-////                
-////        }
-//        ZStack(alignment: .topLeading) {
-//            Text(title)
-//                .font(.subHeader)
-//                .hSpacing(.leading)
-//                .scaleEffect(isTextFieldFocused ? 0.8 : 1, anchor: .leading)
-//                .offset(y: isTextFieldFocused ? -20 : 0)
-//                .animation(.easeInOut(duration: 0.2), value: isTextFieldFocused)
-//            
-//            TextField("", text: value)
-//                .focused($isTextFieldFocused)
-//                .onChange(of: isTextFieldFocused) { focused in
-//                        if !focused {
-//                            // If the text field loses focus and is empty, reset the label
-//                            withAnimation(.easeInOut(duration: 0.2)) {
-//                                isTextFieldFocused = false
-//                            }
-//                        }
-//                    }
-//        }
-//        .padding(.vertical, 10)
-//        .padding(.horizontal, 15)
-//        .background(.gray.opacity(0.2), in: .rect(cornerRadius: 10))
-//        .onTapGesture {
-//            isTextFieldFocused = true
-//        }
-//    }
+    @ViewBuilder
+    func CustomPicklist() -> some View {
+        ZStack(alignment: .leading) {
+            Text("Category")
+                .font(.subHeader)
+                .foregroundStyle(.secondary)
+                .tracking(0.7)
+                .hSpacing(.leading)
+                .scaleEffect(0.75, anchor: .leading)
+                .offset(y: -25)
+            
+            Menu {
+                Picker("", selection: $category, content: {
+                    ForEach(CategoryNames.allCases, id: \.rawValue) { category in
+                        Text(category.rawValue.capitalized)
+                            .tag(category)
+                            .font(.subHeader)
+                    }
+                })
+            } label: {
+                Text(category.rawValue.capitalized)
+                    .font(.subHeader)
+                    .tracking(0.7)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            }
+            .id(category)
+        }
+        .padding(.top, 20)
+        .padding(.horizontal, 15)
+//        .frame(maxWidth: 140)
+        .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+    }
 }
 
 #Preview {

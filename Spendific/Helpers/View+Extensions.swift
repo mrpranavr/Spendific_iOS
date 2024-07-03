@@ -33,4 +33,12 @@ extension View {
         
         return locale.currencySymbol ?? ""
     }
+    
+    var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        
+        return formatter
+    }
 }
