@@ -18,12 +18,15 @@ public struct CustomSegementedPicklist<T: Equatable, Content: View>: View {
     @Binding var selectedItem: T
     private let items: [T]
     private let content: (T) -> Content
+    @Binding var toChangeValue: CategoryNames
     
-    public init(_ items: [T],
+    init(_ items: [T],
                 selectedItem: Binding<T>,
+                toChangeValue: Binding<CategoryNames>,
                 @ViewBuilder content: @escaping (T) -> Content) {
         self._selectedItem = selectedItem
         self.items = items
+        self._toChangeValue = toChangeValue
         self.content = content
     }
     
@@ -51,13 +54,14 @@ public struct CustomSegementedPicklist<T: Equatable, Content: View>: View {
                     .onTapGesture {
                         withAnimation(.linear(duration: 0.2)) {
                             self.selectedItem = self.items[index]
+                            self.toChangeValue = self.selectedItem as! SpendType == SpendType.income ? CategoryNames.income : CategoryNames.other
                         }
                     }
             }
         }
         .padding(.horizontal, 5)
         .frame(height: 45)
-        .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+        .background(colorScheme == .light ? .lightGrayCustom : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
     }
 }
 

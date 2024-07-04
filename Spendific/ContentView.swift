@@ -10,9 +10,10 @@ import SwiftUI
 struct ContentView: View {
     // Visibility Status
     @AppStorage("isFirstTime") private var isFirstTime: Bool = true
+    @AppStorage("enableDarkMode") private var enableDarkMode: Bool = false
     
     // Environment variables
-    @Environment(\.colorScheme) private var colorScheme
+   // @Environment(\.colorScheme) private var colorScheme
     
     // Tab View Properties
     @State private var currentTab: Tab = .home
@@ -42,7 +43,7 @@ struct ContentView: View {
             TabView(selection: $currentTab,
                     content:  {
                 Group {
-                    Home()
+                    Home(currentPage: $currentTab)
                         .tag(Tab.home)
                     Search()
                         .tag(Tab.search)
@@ -53,6 +54,7 @@ struct ContentView: View {
                 }
                 .toolbar(.hidden, for: .tabBar)
             })
+          //  .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 
             CustomTabBar(selectedTab: $currentTab)
         }
@@ -62,6 +64,7 @@ struct ContentView: View {
             IntroScreen()
                 .interactiveDismissDisabled()
         })
+        .environment(\.colorScheme, enableDarkMode ? .dark : .light)
     }
 }
 

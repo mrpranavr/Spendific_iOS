@@ -11,6 +11,7 @@ struct Settings: View {
     
     // User Properties
     @AppStorage("userName") private var userName: String = ""
+    @AppStorage("enableDarkMode") private var enableDarkMode: Bool = false
     
     // App Lock Properties
     @AppStorage("isAppLockEnabled") private var isAppLockEnabled: Bool = false
@@ -21,6 +22,14 @@ struct Settings: View {
             List(content: {
                 Section("User Name", content: {
                     TextField("Enter your name", text: $userName)
+                        .font(.settingsHeader)
+                        .tracking(0.7)
+                })
+                .font(.custom("Poppins-Regular", size: 13))
+                .tracking(0.7)
+                
+                Section("Appearance", content: {
+                    Toggle("Enable Dark Mode", isOn: $enableDarkMode)
                         .font(.settingsHeader)
                         .tracking(0.7)
                 })
@@ -66,6 +75,7 @@ struct Settings: View {
             })
             .navigationTitle("Settings")
         }
+        .environment(\.colorScheme, enableDarkMode ? .dark : .light)
     }
 }
 

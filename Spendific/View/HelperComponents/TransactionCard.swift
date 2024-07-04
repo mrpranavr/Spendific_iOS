@@ -25,11 +25,12 @@ struct TransactionCard: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(transaction.title)
-                    .font(.custom("Poppins-Medium", size: 12))
+                    .font(.custom("Poppins-Medium", size: 13))
                     .tracking(0.8)
                 
                 Text(format(date: transaction.dateAdded, format: "dd-MM-yyyy"))
-                    .font(.subTextSmall)
+                    .font(.custom("Poppins-Regular", size: 11))
+                    .foregroundStyle(.gray)
             }
             
             Spacer()

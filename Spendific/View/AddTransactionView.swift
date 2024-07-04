@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddTransactionView: View {
+    @AppStorage("enableDarkMode") private var enableDarkMode: Bool = false
+    
     // Environment Variables
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
@@ -17,8 +19,8 @@ struct AddTransactionView: View {
     @State private var remarks: String = ""
     @State private var amount: Double = .zero
     @State private var dateAdded: Date = .init()
-    @State private var spendType: SpendType = .expense
-    @State private var category: CategoryNames = .other
+    @State var category: CategoryNames = .other
+    @State var spendType: SpendType = .expense
     
     @State private var amountString: String = ""
     
@@ -53,7 +55,7 @@ struct AddTransactionView: View {
                         FloatingLabelTextField(title: "Remarks", text: $remarks, isTextFieldFocused: _isRemarkFieldFocused)
                         
                         // Spend type segemented picker
-                        CustomSegementedPicklist(SpendType.allCases, selectedItem: $spendType, content: {type in
+                        CustomSegementedPicklist(SpendType.allCases, selectedItem: $spendType, toChangeValue: $category, content: {type in
                             Text(type.rawValue.capitalized)
                                 .font(.subHeader)
                                 .foregroundStyle(.primary)
@@ -67,13 +69,14 @@ struct AddTransactionView: View {
                             FloatingLabelTextField(title: "Amount", text: $amountString, isTextFieldFocused: _isAmountFieldFocused, placeholder: "0.0", type: .Number)
                             
                             // Category Picker Field
-                            CustomPicklist()
+                            CustomPicklist(picklistValues: CategoryNames.picklistValues(for: spendType))
+                            
                         }
                         
                         DatePicker("", selection: $dateAdded, displayedComponents: [.date])
                             .datePickerStyle(.graphical)
                             .padding()
-                            .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+                            .background(!enableDarkMode ? .lightGrayCustom : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
                     }
                 }
                 .padding(.top, 30)
@@ -102,10 +105,11 @@ struct AddTransactionView: View {
                 })
             })
         }
+        .environment(\.colorScheme, enableDarkMode ? .dark : .light)
     }
     
     @ViewBuilder
-    func CustomPicklist() -> some View {
+    func CustomPicklist(picklistValues: [CategoryNames]) -> some View {
         ZStack(alignment: .leading) {
             Text("Category")
                 .font(.subHeader)
@@ -117,7 +121,8 @@ struct AddTransactionView: View {
             
             Menu {
                 Picker("", selection: $category, content: {
-                    ForEach(CategoryNames.allCases, id: \.rawValue) { category in
+                    ForEach(picklistValues,
+                            id: \.rawValue) { category in
                         Text(category.rawValue.capitalized)
                             .tag(category)
                             .font(.subHeader)
@@ -133,11 +138,12 @@ struct AddTransactionView: View {
         }
         .padding(.top, 20)
         .padding(.horizontal, 15)
-//        .frame(maxWidth: 140)
-        .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+        //        .frame(maxWidth: 140)
+        .background(!enableDarkMode ? .lightGrayCustom : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+
     }
 }
 
 #Preview {
-    AddTransactionView()
+    AddTransactionView(category: CategoryNames.income)
 }

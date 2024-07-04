@@ -25,7 +25,7 @@ struct FloatingLabelTextField: View {
                 .foregroundStyle(.secondary)
                 .tracking(0.7)
                 .hSpacing(.leading)
-                .scaleEffect(isTextFieldFocused || !text.isEmpty || placeholder != nil  ? 0.75 : 1, anchor: .leading)
+                .scaleEffect(isTextFieldFocused || !text.isEmpty || placeholder != nil  ? 0.8 : 1, anchor: .leading)
                 .offset(y: isTextFieldFocused || !text.isEmpty || placeholder != nil ? -25 : 0)
                 .animation(.easeInOut(duration: 0.1), value: isTextFieldFocused)
             
@@ -56,10 +56,10 @@ struct FloatingLabelTextField: View {
                     }
             }
         }
-        .padding(.top, isTextFieldFocused || !text.isEmpty || placeholder != nil ? 30 : 10)
-        .padding(.bottom, 10)
+        .padding(.top, isTextFieldFocused || !text.isEmpty || placeholder != nil ? 30 : 11.5)
+        .padding(.bottom, 11.5)
         .padding(.horizontal, 15)
-        .background(colorScheme == .light ? .lightGray : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
+        .background(colorScheme == .light ? .lightGrayCustom : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
         .animation(.easeInOut(duration: 0.1), value: isTextFieldFocused)
     }
 }

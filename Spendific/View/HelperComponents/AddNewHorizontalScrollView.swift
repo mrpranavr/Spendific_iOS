@@ -12,12 +12,30 @@ struct AddNewHorizontalScrollView: View {
     // Environment variables
     @Environment(\.colorScheme) private var colorScheme
     
+    // View Properties
+    @State var showAddTransactionModal: Bool = false
+    @State var currentCategorySelected: CategoryNames?
+    
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false, content: {
-            HStack {
-                ForEach(CategoryNames.allCases, id: \.rawValue) { category in
-                     addNewItem(name: category.rawValue, iconName: getCategoryIconName(category), category: category)
+        NavigationStack {
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack {
+                    ForEach(CategoryNames.allCases, id: \.rawValue) { category in
+                         addNewItem(name: category.rawValue, iconName: getCategoryIconName(category), category: category)
+                    }
                 }
+            })
+        }
+        .onChange(of: currentCategorySelected) { _ in
+            if currentCategorySelected != nil {
+                showAddTransactionModal.toggle()
+            }
+        }
+        .sheet(isPresented: $showAddTransactionModal, onDismiss: {
+            currentCategorySelected = nil
+        }, content: {
+            if let category = currentCategorySelected {
+                AddTransactionView(category: category, spendType: category == .income ? .income : .expense)
             }
         })
     }
@@ -25,8 +43,7 @@ struct AddNewHorizontalScrollView: View {
     @ViewBuilder
     func addNewItem(name: String, iconName: String, category: CategoryNames) -> some View {
         Button(action: {
-            // TODO: Implement feature to toggle the add new expense modal/sheet from the parent view via bindings.
-            
+            currentCategorySelected = category
         }, label: {
             VStack {
                 Image(systemName: iconName)
@@ -35,13 +52,14 @@ struct AddNewHorizontalScrollView: View {
                     .frame(width: 77, height: 77)
                     .background(colorScheme == .dark ? getCategoryAccentColor(category) : getCategoryBgColor(category), in: .rect(cornerRadius: 16))
                 
-                Text(name)
+                Text(name.capitalized)
                     .font(.subTexts)
                     .foregroundStyle(colorScheme == .dark ? .white : appTint)
                     .tracking(0.8)
             }
         })
     }
+
 }
 
 #Preview {

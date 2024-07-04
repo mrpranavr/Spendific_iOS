@@ -23,6 +23,15 @@ CategoryNames -> Use this enum to add more transaction type to the app.
 
 enum CategoryNames: String, CaseIterable {
     case income, transport, food, media, other
+    
+    static func picklistValues(for spendType: SpendType) -> [CategoryNames] {
+        switch spendType {
+        case .expense:
+            return [.transport, .food, .media, .other]
+        case .income:
+            return [.income]
+        }
+    }
 }
 
 // ================================================

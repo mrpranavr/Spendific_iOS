@@ -16,6 +16,7 @@ struct Home: View {
     
     // View Properties
     @State private var showAddExpenseView: Bool = false
+    @Binding var currentPage: Tab
     
     var body: some View {
         GeometryReader { size in
@@ -47,15 +48,25 @@ struct Home: View {
                                         .font(.cardCatStyle)
                                         .tracking(0.7)
                                     
-                                    Text("View All")
-                                        .font(.subHeader)
-                                        .foregroundStyle(.gray)
-                                        .tracking(0.7)
+                                    Button(action: {
+                                        currentPage = .search
+                                    }, label: {
+                                        Text("View All")
+                                            .font(.subHeader)
+                                            .foregroundStyle(.gray)
+                                            .tracking(0.7)
+                                    })
+                                    
                                 }
                                 .padding(.bottom, 16)
                                 
                                 ForEach(sampleTransactions) { item in
-                                    TransactionCard(transaction: item)
+                                    Button(action: {
+                                        
+                                    }, label: {
+                                        TransactionCard(transaction: item)
+                                    })
+                                    .buttonStyle(.plain)
                                 }
                             }
                             .padding(.horizontal, 16)
@@ -128,5 +139,5 @@ struct Home: View {
 }
 
 #Preview {
-    Home()
+    Home(currentPage: .constant(.home))
 }
