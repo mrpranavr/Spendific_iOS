@@ -19,7 +19,7 @@ struct FloatingLabelTextField: View {
     var type: TextFieldTypes = .String
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Text(title)
                 .font(.subHeader)
                 .foregroundStyle(.secondary)
@@ -30,9 +30,10 @@ struct FloatingLabelTextField: View {
                 .animation(.easeInOut(duration: 0.1), value: isTextFieldFocused)
             
             if type == .String {
-                TextField("", text: $text)
+                TextField("", text: $text, axis: .vertical)
                     .font(.subHeader)
                     .focused($isTextFieldFocused)
+                    .lineLimit(3)
                     .onChange(of: isTextFieldFocused) { focused in
                         if !focused && text.isEmpty {
                             withAnimation(.easeIn(duration: 0.1), {

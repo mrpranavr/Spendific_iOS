@@ -15,6 +15,7 @@ struct AddNewHorizontalScrollView: View {
     // View Properties
     @State var showAddTransactionModal: Bool = false
     @State var currentCategorySelected: CategoryNames?
+    @State var editTransaction: Transaction?
     
     var body: some View {
         NavigationStack {
@@ -35,7 +36,8 @@ struct AddNewHorizontalScrollView: View {
             currentCategorySelected = nil
         }, content: {
             if let category = currentCategorySelected {
-                AddTransactionView(category: category, spendType: category == .income ? .income : .expense)
+                AddTransactionView(category: category, spendType: category == .income ? .income : .expense, editTransaction: $editTransaction)
+                    .interactiveDismissDisabled()
             }
         })
     }

@@ -40,6 +40,15 @@ struct Transaction: Identifiable {
     var catIconName: String {
         return availableCategories.first(where: {$0.name == categoryName})?.iconName ?? ""
     }
+    
+    var rawCategory: CategoryNames? {
+        return CategoryNames.allCases.first(where: {$0.rawValue == categoryName})
+//        return availableCategories.first(where: {$0.name == categoryName}).
+    }
+    
+    var rawSpendType: SpendType? {
+        return SpendType.allCases.first(where: {$0.rawValue == spendType})
+    }
 }
 
 // Sample transaction to be used for building/testing the app with transactions.

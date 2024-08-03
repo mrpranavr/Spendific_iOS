@@ -10,13 +10,12 @@ import SwiftUI
 struct Home: View {
     // App Storage Properties
     @AppStorage("userName") private var userName: String = "Icarus"
-    
-    // Environment Properties
-    @Environment(\.colorScheme) private var colorScheme
-    
+        
     // View Properties
     @State private var showAddExpenseView: Bool = false
     @Binding var currentPage: Tab
+    @State var currentSelectedTransaction: Transaction?
+    
     
     var body: some View {
         GeometryReader { size in
@@ -62,7 +61,9 @@ struct Home: View {
                                 
                                 ForEach(sampleTransactions) { item in
                                     Button(action: {
-                                        
+                                        // Open transaction details screen
+                                        currentSelectedTransaction = item
+                                        showAddExpenseView = true
                                     }, label: {
                                         TransactionCard(transaction: item)
                                     })
@@ -92,50 +93,11 @@ struct Home: View {
                 })
             }
             .sheet(isPresented: $showAddExpenseView, content: {
-                AddTransactionView()
+                AddTransactionView(editTransaction: $currentSelectedTransaction)
+                    .interactiveDismissDisabled()
             })
         }
     }
-    
-    
-//    @ViewBuilder
-//    func HeaderView(_ size: CGSize) -> some View {
-//        HStack(spacing: 10) {
-//            VStack(alignment: .leading, spacing: 5) {
-//                Text("Good Morning")
-//                    .font(.caption)
-//                    .foregroundStyle(.gray)
-//                
-//                if !userName.isEmpty {
-//                    Text(userName)
-//                        .font(.callout.bold())
-//                        .foregroundStyle(appTint)
-//                }
-//            }
-//            
-//            Spacer()
-//            
-//            Button(action: {
-//                
-//            }, label: {
-//                Image(systemName: "plus")
-//                    .font(.title3)
-//                    .fontWeight(.semibold)
-//                    .foregroundStyle(.white)
-//                    .frame(width: 35, height: 35)
-//                    .background(appAccent.gradient, in: .circle)
-//                    .contentShape(.circle)
-//            })
-//        }
-//        .background {
-//            VStack(spacing: 0) {
-//                Rectangle()
-//                    .fill(.ultraThinMaterial)
-//                
-//                Divider()
-//            }
-//        }
-//    }
 }
 
 #Preview {

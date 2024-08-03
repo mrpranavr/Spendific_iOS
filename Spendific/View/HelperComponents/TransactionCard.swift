@@ -39,6 +39,7 @@ struct TransactionCard: View {
                 .font(.subHeader)
                 .fontWeight(.semibold)
                 .foregroundStyle(transaction.spendType == SpendType.income.rawValue ? .incomeAccent : .primaryRed)
+                .padding(.leading, 5)
         }
         .padding(15)
         .background {

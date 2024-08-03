@@ -37,19 +37,19 @@ struct Settings: View {
                 .tracking(0.7)
                
                 
-                Section("App Lock", content: {
-                    Toggle("Enable App Lock", isOn: $isAppLockEnabled)
-                        .font(.settingsHeader)
-                        .tracking(0.7)
-                    
-                    if isAppLockEnabled {
-                        Toggle("Background App Lock", isOn: $backgroundLockEnabled)
-                            .font(.settingsHeader)
-                            .tracking(0.7)
-                    }
-                })
-                .font(.custom("Poppins-Regular", size: 13))
-                .tracking(0.7)
+//                Section("App Lock", content: {
+//                    Toggle("Enable App Lock", isOn: $isAppLockEnabled)
+//                        .font(.settingsHeader)
+//                        .tracking(0.7)
+//                    
+////                    if isAppLockEnabled {
+////                        Toggle("Background App Lock", isOn: $backgroundLockEnabled)
+////                            .font(.settingsHeader)
+////                            .tracking(0.7)
+////                    }
+//                })
+//                .font(.custom("Poppins-Regular", size: 13))
+//                .tracking(0.7)
                 
                 Section("Reset Data", content: {
                     // TODO: Reset all the app data (Maybe include a filter to choose custom date range as well ?)

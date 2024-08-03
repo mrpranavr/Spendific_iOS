@@ -22,6 +22,9 @@ struct AddTransactionView: View {
     @State var category: CategoryNames = .other
     @State var spendType: SpendType = .expense
     
+    // Edit Transaction ?
+    @Binding var editTransaction: Transaction?
+    
     @State private var amountString: String = ""
     
     // Focus States
@@ -51,6 +54,7 @@ struct AddTransactionView: View {
                         // Title Input Field
                         FloatingLabelTextField(title: "Title", text: $title, isTextFieldFocused: _isTitleFieldFocused)
                         
+                        
                         // Remarks Input Field
                         FloatingLabelTextField(title: "Remarks", text: $remarks, isTextFieldFocused: _isRemarkFieldFocused)
                         
@@ -61,8 +65,6 @@ struct AddTransactionView: View {
                                 .foregroundStyle(.primary)
                                 .frame(maxWidth: .infinity)
                         })
-                        
-                        // TODO: Add Amount field here. Need to update the Custom text Field to check number type.
                         
                         HStack {
                             // Amount Input Field
@@ -82,7 +84,7 @@ struct AddTransactionView: View {
                 .padding(.top, 30)
             })
             .padding(.horizontal, 16)
-            .navigationTitle("Add Transaction")
+            .navigationTitle("\(editTransaction == nil ? "Add" : "Edit") Transaction")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .cancellationAction, content: {
@@ -103,6 +105,24 @@ struct AddTransactionView: View {
                             .font(.settingsHeader)
                     })
                 })
+            })
+            .onAppear(perform: {
+                if let editTransaction {
+                    // Loading the selected transaction data to modal
+                    title = editTransaction.title
+                    remarks = editTransaction.remarks
+                    dateAdded = editTransaction.dateAdded
+                    amount = editTransaction.amount
+                    amountString = String(editTransaction.amount)
+                    if let categoryN = editTransaction.rawCategory {
+                        print(categoryN)
+                        self.category = categoryN
+                    }
+                    if let spendT = editTransaction.rawSpendType {
+                        print(spendT)
+                        self.spendType = spendT
+                    }
+                }
             })
         }
         .environment(\.colorScheme, enableDarkMode ? .dark : .light)
@@ -138,12 +158,13 @@ struct AddTransactionView: View {
         }
         .padding(.top, 20)
         .padding(.horizontal, 15)
-        //        .frame(maxWidth: 140)
+        .frame(maxWidth: 140)
         .background(!enableDarkMode ? .lightGrayCustom : .gray.opacity(0.2), in: .rect(cornerRadius: 10))
 
     }
 }
 
 #Preview {
-    AddTransactionView(category: CategoryNames.income)
+//    AddTransactionView(category: CategoryNames.income, editTransaction: <#T##Binding<Transaction?>#>)
+    ContentView()
 }
